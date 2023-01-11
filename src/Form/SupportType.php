@@ -12,10 +12,23 @@ class SupportType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name')
-            ->add('releaseDate')
-            ->add('description')
-            ->add('constructor')
+            ->add('name', options:[
+                'label' => 'support.name'
+            ])
+            ->add('releaseDate', options:[
+                'label' => 'support.release_date',
+                'widget' => 'single_text'
+            ])
+            ->add('description', options:[
+                'label' => 'support.description',
+                'attr' => [ 
+                    'rows' => 12
+                    ]
+            ])
+            ->add('constructor', options:[
+                'label' => 'support.constructor'
+
+            ])
         ;
     }
 
