@@ -37,6 +37,12 @@
                         </td>
                         <td>{{ entity.releaseDate|date('Y') }}</td>
                         <td>{{ entity.editor }}</td>
+                        <td>
+                            {%for support in entity.support %}
+                            <span class="badge bg-secondary">{{ support }}<span>
+                            {% endfor %}
+                        </td>
+
                         <td class="text-white {{ entity.enabled ? 'bg-success':'bg-warning' }}">
                             {{ entity.enabled ? 'Oui':'Non' }}
                         </td>

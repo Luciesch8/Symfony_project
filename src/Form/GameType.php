@@ -65,6 +65,11 @@ class GameType extends AbstractType
                 'label' => 'game.delete_main_image',
                 'required' => false,
             ])
+
+            ->add('support', options:[
+                'label' => 'game.support',
+                'expanded' => true
+            ])
         ;
     }
 

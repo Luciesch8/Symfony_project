@@ -14,6 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class SupportController extends AbstractController
 {
     #[Route('/', name: 'app_support_index', methods: ['GET'])]
+    #[IsGranted("ROLE_ADMIN")]
     public function index(SupportRepository $supportRepository): Response
     {
         return $this->render('support/index.html.twig', [
@@ -22,6 +23,7 @@ class SupportController extends AbstractController
     }
 
     #[Route('/new', name: 'app_support_new', methods: ['GET', 'POST'])]
+    #[IsGranted("ROLE_ADMIN")]
     public function new(Request $request, SupportRepository $supportRepository): Response
     {
         $support = new Support();
@@ -49,6 +51,7 @@ class SupportController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_support_edit', methods: ['GET', 'POST'])]
+    #[IsGranted("ROLE_ADMIN")]
     public function edit(Request $request, Support $support, SupportRepository $supportRepository): Response
     {
         $form = $this->createForm(SupportType::class, $support);
@@ -67,6 +70,7 @@ class SupportController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_support_delete', methods: ['POST'])]
+    #[IsGranted("ROLE_ADMIN")]
     public function delete(Request $request, Support $support, SupportRepository $supportRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$support->getId(), $request->request->get('_token'))) {

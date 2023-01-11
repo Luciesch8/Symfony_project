@@ -3,19 +3,8 @@
 {% block content %}
 <h1>Nouveau jeu</h1>
 
-{{ form_start(form) }} {# Début du formulaire #}
-{{ form_errors(form) }}
-<div class="card">
-    <div class="card-body">
-        {# Affiche le formulaire "from" #}
-        {# {{ form(form) }} #}
-        {{ form_widget(form) }}
-    </div>
 
-    <div class="card-footer">
-        {# button:submit.btn.btn-primary #}
-        <button type="submit" class="btn btn-primary">Enregistrer</button>
-    </div>
-</div>
-{{ form_end(form) }} {# Fin du formulaire #}
+{% include "game/_form.html.twig"%}
+
+
 {% endblock %}

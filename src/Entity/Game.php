@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use App\Repository\GameRepository;
@@ -51,9 +53,13 @@ class Game
     #[ORM\ManyToOne(inversedBy: 'games')]
     private ?User $author = null;
 
+    #[ORM\ManyToMany(targetEntity: Support::class, inversedBy: 'games')]
+    private Collection $support;
+
     public function __construct()
     {
         $this->releaseDate = new \DateTime;
+        $this->support = new ArrayCollection();
     }
 
     public function getId(): int
@@ -159,6 +165,30 @@ class Game
     public function setAuthor(?User $author): self
     {
         $this->author = $author;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Support>
+     */
+    public function getSupport(): Collection
+    {
+        return $this->support;
+    }
+
+    public function addSupport(Support $support): self
+    {
+        if (!$this->support->contains($support)) {
+            $this->support->add($support);
+        }
+
+        return $this;
+    }
+
+    public function removeSupport(Support $support): self
+    {
+        $this->support->removeElement($support);
 
         return $this;
     }

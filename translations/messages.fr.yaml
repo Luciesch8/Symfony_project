@@ -1,13 +1,22 @@
 no: Non
 yes: Oui
 
+support:
+  name: Nom du support
+  release_date: Date de sortie
+  description: Description
+  constructor: Contructeur
+
 game:
+  support: Support
   title: Titre du jeu
   title_help: Ecrivez le titre complet
   editor: Editeur du jeu
   enabled: Activé
   description: Description du jeu
   delete_main_image: Supprimer l'image
+  release_date: Date de sortie
+  main_image: Image
   new:
     title: Ajouter un jeu
     success: Le jeu "%title%" a bien été ajouté

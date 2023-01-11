@@ -22,6 +22,10 @@ class GameRepository extends ServiceEntityRepository
         $begin = ($page - 1) * $itemCount; // Calcul de l'offset
 
         $qb = $this->createQueryBuilder('g')
+            ->addSelect('i, e, s')
+            ->leftJoin('g.mainImage', 'i')
+            ->leftJoin('g.editor', 'e')
+            ->leftJoin('g.supports', 's')
             ->setMaxResults($itemCount) // LIMIT
             ->setFirstResult($begin)
         ;
