@@ -1,0 +1,17 @@
+{% extends "back_layout.html.twig" %}
+
+{% block content %}
+<h1>{{ 'game.delete.title'|trans }}</h1>
+
+<form action="" method="post">
+    <div class="alert alert-danger">
+        {{ 'game.delete.confirm'|trans({'%title%': entity.title}) }}
+    </div>
+
+    <a href="{{ path('app_game_admin') }}" class="btn btn-light">Non, annuler</a>
+    <button type="submit" class="btn btn-danger">Oui, supprimer</button>
+
+    {# Génération d'un token pour plus de sécurité #}
+    <input type="hidden" name="token" value="{{ csrf_token('delete_game_' ~ entity.id) }}">
+</form>
+{% endblock %}
